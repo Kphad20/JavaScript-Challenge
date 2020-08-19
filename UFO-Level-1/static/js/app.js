@@ -2,12 +2,12 @@
 var tableData = data;
 
 // Console.log the data
-// console.log(tableData);
+console.log(tableData);
 
-// Get a reference to the table body
+// Reference the table body
 var tbody = d3.select("tbody");
 
-// Loop through data and append table rows and corresponding table data values to each ufo report object
+// Loop through data and append table rows and corresponding table data values to each UFO report object
 tableData.forEach((ufoReport) => {
     var row = tbody.append("tr");
     Object.entries(ufoReport).forEach(([key, value]) => {
@@ -16,7 +16,7 @@ tableData.forEach((ufoReport) => {
     });
   });
 
-// Select the button and form
+// Select the button and input form
 var button = d3.select("#filter-btn");
 var form = d3.select("form");
 
@@ -36,15 +36,16 @@ function runEnter() {
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
 
-    // Print the value to the console
-    // console.log(inputValue);
-    // console.log(tableData);
-
+    // Filter by date input
     var filteredData = tableData.filter(date => date.datetime === inputValue);
 
-    // Clear table to show filtered table
+    // Clear table to show filtered table only
     d3.select("tbody").html("");
 
+    // Clear input field after submitting
+    d3.select("#datetime").node().value = "";
+
+    // Loop through data and append filtered data as new table 
     filteredData.forEach((ufoReport) => {
         var row = tbody.append("tr");
         Object.entries(ufoReport).forEach(([key, value]) => {
@@ -53,5 +54,6 @@ function runEnter() {
         });
       });
 
+    // Console.log the filtered data
     console.log(filteredData);
 }
