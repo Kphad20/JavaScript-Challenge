@@ -7,8 +7,8 @@ I will create a basic HTML web page, and using the UFO dataset provided in the f
 ## Level 2: Multiple Search Categories
 After completing all of Level 1 criteria, I will then use multiple input tags and/or select dropdowns and write JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:
 
--datetime
--city
--state
--country
+-datetime<br/>
+-city<br/>
+-state<br/>
+-country<br/>
 -shape
