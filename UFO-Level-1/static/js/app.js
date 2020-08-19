@@ -2,7 +2,7 @@
 var tableData = data;
 
 // Console.log the data
-console.log(tableData);
+// console.log(tableData);
 
 // Get a reference to the table body
 var tbody = d3.select("tbody");
@@ -37,10 +37,21 @@ function runEnter() {
     var inputValue = inputElement.property("value");
 
     // Print the value to the console
-    console.log(inputValue);
-    console.log(tableData);
+    // console.log(inputValue);
+    // console.log(tableData);
 
     var filteredData = tableData.filter(date => date.datetime === inputValue);
+
+    // Clear table to show filtered table
+    d3.select("tbody").html("");
+
+    filteredData.forEach((ufoReport) => {
+        var row = tbody.append("tr");
+        Object.entries(ufoReport).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });
 
     console.log(filteredData);
 }
