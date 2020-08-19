@@ -80,7 +80,8 @@ select {
 }
 
 #table-area th {
-  text-align: center;
+  text-align: left;
+  font-weight: bold;
 }
 
 #table-area th:first-child,
@@ -129,11 +130,13 @@ select {
   text-align: center;
   font-weight: bold;
   font-size: 15pt;
+  background-color: rgb(138, 135, 135);
 }
 
 .form-group {
   text-align: center;
   color: gray;
+  font-size: 11pt;
 }
 
 button {
