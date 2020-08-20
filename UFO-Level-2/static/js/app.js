@@ -46,7 +46,7 @@ document.querySelectorAll("input.form-control").forEach(function(el,idx){
 });
 
 // Clear search fields with Reset button using "onclick=perfromReset()" event handler
-// Use document.getElementById() method to return an element whose id property matches
+// Use "document.getElementById()" method to return an element whose id property matches
 function performReset() {
   document.getElementById("datetime").value = "";
   document.getElementById("city").value = "";
