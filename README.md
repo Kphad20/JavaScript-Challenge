@@ -1,5 +1,5 @@
 # JavaScript-Challenge
-In this assignment, I will write code that will create a dynamic table based upon a dataset provided, using only HTML, CSS, JavaScript and D3.js.
+In this assignment, I will write code that will create a dynamic table based upon a dataset provided, using HTML, CSS, JavaScript and D3.js.
 
 ## Level 1: Automatic Table and Date Search
 I will create a basic HTML web page, and using the UFO dataset provided in the form of an array of JavaScript objects, write code that appends a table to the web page and then adds new rows of data for each UFO sighting. I will use a date form in the HTML document and write JavaScript code that will listen for events and search through the datetime column to find rows that match user input.

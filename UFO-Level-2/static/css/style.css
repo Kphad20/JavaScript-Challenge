@@ -132,7 +132,7 @@ select {
   font-size: 15pt;
   color: white;
   padding: 10px;
-  background-color: rgb(138, 135, 135);
+  background-color: gray;
 }
 
 .form-group {
