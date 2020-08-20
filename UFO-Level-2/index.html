@@ -23,7 +23,7 @@
     </nav>
     <div class="hero text-center">
       <h1>UFO Sightings</h1>
-      <p>The Truth is Out There</p>
+      <p>The Truth is Out There <br> (Level 2)</p>
     </div>
     <div class="container">
       <div class="row margin-top-50">
@@ -35,7 +35,7 @@
                 <form>
                   <div class="form-group">
                     <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">
+                      <li class="filter list-group-item" id="date-search">
                         <label for="date">Search a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/1/2010">
                       </li>
@@ -48,11 +48,8 @@
                         <input class="form-control" id="state" type="text" placeholder="ca">
                       </li>
                       <li class="filter list-group-item">
-                        <label for="country">Select a Country</label>
-                        <select id="country">
-                          <option value="us">us</option>
-                          <option value="other">other</option>
-                        </select>
+                        <label for="country">Search a Country</label>
+                        <input class="form-control" id="country" type="text" placeholder="us">
                       </li>
                       <li class="filter list-group-item">
                         <label for="shape">Search a Shape</label>
@@ -60,7 +57,7 @@
                       </li>
                     </ul>
                   </div>
-                  <button id="filter-btn" type="button" class="btn btn-secondary">Filter Table</button>
+                  <button id="reset-btn" type="button" onclick="perfromReset()" class="btn btn-secondary">Reset Search</button>
                 </form>
               </div>
             </div>

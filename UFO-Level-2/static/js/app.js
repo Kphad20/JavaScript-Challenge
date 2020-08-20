@@ -16,44 +16,106 @@ tableData.forEach((ufoReport) => {
     });
   });
 
-// Select the button and input form
-var button = d3.select("#filter-btn");
-var form = d3.select("form");
+// // Select the button and input form
+// var button = d3.select("#filter-btn");
+// var form = d3.select("form");
 
-// Create event handlers for clicking the button or pressing the enter key 
-button.on("click", runEnter);
-form.on("submit", runEnter);
+// // Create event handlers for clicking the button or pressing the enter key 
+// button.on("click", runEnter);
+// form.on("submit", runEnter);
 
-// Create the function to run for both events
-function runEnter() {
+// // Create the function to run for both events
+// function runEnter() {
+//     // Prevent the page from refreshing
+//     d3.event.preventDefault();
+//       // Select the input element and get the raw HTML node
+//     var inputElement = d3.select("#datetime");
+//     // Get the value property of the input element
+//     var inputValue = inputElement.property("value");
+//     // Filter by date input
+//     var filteredData = tableData.filter(date => date.datetime === inputValue);
 
-    // Prevent the page from refreshing
-    d3.event.preventDefault();
+//     // Clear table to show filtered table only
+//     d3.select("tbody").html("");
 
-      // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+//     // Clear input field after submitting
+//     d3.select("#datetime").node().value = "";
 
-    // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+//     // Loop through data and append filtered data as new table 
+//     filteredData.forEach((ufoReport) => {
+//         var row = tbody.append("tr");
+//         Object.entries(ufoReport).forEach(([key, value]) => {
+//           var cell = row.append("td");
+//           cell.text(value);
+//         });
+//       });
 
-    // Filter by date input
-    var filteredData = tableData.filter(date => date.datetime === inputValue);
+//     // Console.log the filtered data
+//     console.log(filteredData);
+// }
 
-    // Clear table to show filtered table only
-    d3.select("tbody").html("");
+// // Create the function to run for both events
+// function runEnter() {
+//   // Prevent the page from refreshing
+//   d3.event.preventDefault();
+//     // Select the input element and get the raw HTML node
+//   var inputCity = d3.select("#city");
+//   // Get the value property of the input element
+//   var cityValue = inputCity.property("value");
+//   // Filter by date input
+//   var filteredCity = tableData.filter(citySearch => citySearch.city === cityValue);
 
-    // Clear input field after submitting
-    d3.select("#datetime").node().value = "";
+//   // Clear table to show filtered table only
+//   d3.select("tbody").html("");
 
-    // Loop through data and append filtered data as new table 
-    filteredData.forEach((ufoReport) => {
-        var row = tbody.append("tr");
-        Object.entries(ufoReport).forEach(([key, value]) => {
-          var cell = row.append("td");
-          cell.text(value);
-        });
-      });
+//   // Clear input field after submitting
+//   d3.select("#city").node().value = "";
 
-    // Console.log the filtered data
-    console.log(filteredData);
+//   // Loop through data and append filtered data as new table 
+//   filteredCity.forEach((ufoReport) => {
+//       var row = tbody.append("tr");
+//       Object.entries(ufoReport).forEach(([key, value]) => {
+//         var cell = row.append("td");
+//         cell.text(value);
+//       });
+//     });
+
+//   // Console.log the filtered data
+//   console.log(filteredCity);
+// }
+
+
+
+function performReset() {
+  document.getElementById("datetime").value = "";
+  document.getElementById("city").value = "";
+  document.getElementById("state").value = "";
+  document.getElementById("country").value = "";
+  document.getElementById("shape").value = "";
+  filterTable(event, 0);
 }
+
+function filterTable(event, index) {
+  var filter = event.target.value.toLowerCase();
+  var rows = document.querySelector("#ufo-table tbody").rows;
+  for (var i = 0; i < rows.length; i++) {
+    var dateCol = rows[i].cells[0].textContent.toLowerCase();
+    var cityCol = rows[i].cells[1].textContent.toLowerCase();
+    var stateCol = rows[i].cells[2].textContent.toLowerCase();
+    var countryCol = rows[i].cells[3].textContent.toLowerCase();
+    var shapeCol = rows[i].cells[4].textContent.toLowerCase();
+    if ((dateCol.indexOf(filter) > -1 && index == 0) || (cityCol.indexOf(filter) > -1 && index == 1) || (stateCol.indexOf(filter) > -1 && index == 2) || (
+      countryCol.indexOf(filter) > -1 && index == 3) || (shapeCol.indexOf(filter) > -1 && index == 4)) {
+      rows[i].style.display = "";
+    } 
+    else {
+      rows[i].style.display = "none";
+    }      
+  }
+}
+
+document.querySelectorAll('input.form-control').forEach(function(el,idx){
+  el.addEventListener('keyup', function(e){
+    filterTable(e, idx);
+  }, false);
+});
