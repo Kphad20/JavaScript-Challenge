@@ -39,9 +39,9 @@ function filterTable(event, index) {
 };
 
 // Add event listener, "keyup", and loop through filters to check for input keys
-document.querySelectorAll("input.form-control").forEach(function(el,idx){
-  el.addEventListener("keyup", function(e){
-    filterTable(e, idx);
+document.querySelectorAll("input.form-control").forEach(function(item, num){
+  item.addEventListener("keyup", function(each){
+    filterTable(each, num);
   }, false);
 });
 
