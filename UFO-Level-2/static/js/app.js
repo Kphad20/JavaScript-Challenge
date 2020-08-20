@@ -84,17 +84,7 @@ tableData.forEach((ufoReport) => {
 //   console.log(filteredCity);
 // }
 
-
-
-function performReset() {
-  document.getElementById("datetime").value = "";
-  document.getElementById("city").value = "";
-  document.getElementById("state").value = "";
-  document.getElementById("country").value = "";
-  document.getElementById("shape").value = "";
-  filterTable(event, 0);
-}
-
+// Filter by events of input elements by passing the event and specific index
 function filterTable(event, index) {
   var filter = event.target.value.toLowerCase();
   var rows = document.querySelector("#ufo-table tbody").rows;
@@ -105,17 +95,26 @@ function filterTable(event, index) {
     var countryCol = rows[i].cells[3].textContent.toLowerCase();
     var shapeCol = rows[i].cells[4].textContent.toLowerCase();
     if ((dateCol.indexOf(filter) > -1 && index == 0) || (cityCol.indexOf(filter) > -1 && index == 1) || (stateCol.indexOf(filter) > -1 && index == 2) || (
-      countryCol.indexOf(filter) > -1 && index == 3) || (shapeCol.indexOf(filter) > -1 && index == 4)) {
-      rows[i].style.display = "";
+      countryCol.indexOf(filter) > -1 && index == 3) || (shapeCol.indexOf(filter) > -1 && index == 4)) {rows[i].style.display = "";
     } 
     else {
       rows[i].style.display = "none";
     }      
   }
-}
+};
 
 document.querySelectorAll('input.form-control').forEach(function(el,idx){
   el.addEventListener('keyup', function(e){
     filterTable(e, idx);
   }, false);
 });
+
+// Reset search fields with Reset button
+function performReset() {
+  document.getElementById("datetime").value = "";
+  document.getElementById("city").value = "";
+  document.getElementById("state").value = "";
+  document.getElementById("country").value = "";
+  document.getElementById("shape").value = "";
+  filterTable(event, 0);
+};
