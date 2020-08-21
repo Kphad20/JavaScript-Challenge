@@ -16,7 +16,7 @@ tableData.forEach((ufoReport) => {
     });
   });
 
-// Filter each row so table shows any rows that have at least one column that contains the value in the input field.
+// Filter each row so table shows any data that have at least one column that contains the value in the input field.
 // Filter by events of input elements by passing the event and specific index.
 function filterTable(event, index) {
   var filter = event.target.value.toLowerCase();
